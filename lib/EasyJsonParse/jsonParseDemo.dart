@@ -32,19 +32,22 @@ class _JsonParseDemoState extends State<JsonParseDemo> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        appBar: AppBar(
-          title: Text(_loading ? 'Loading......' : 'Users'),
+      appBar: AppBar(
+        title: Text(_loading ? 'Loading......' : 'Users'),
+      ),
+      body: Container(
+        color: Colors.white,
+        child: ListView.builder(
+          itemCount: null == _users ? 0 : _users.length,
+          itemBuilder: (context, index) {
+            User user = _users[index];
+            return ListTile(
+              title: Text(user.name),
+              subtitle: Text(user.email),
+            );
+          },
         ),
-        body: Container(
-            color: Colors.white,
-            child: ListView.builder(
-                itemCount: null == _users ? 0 : _users.length,
-                itemBuilder: (context, index) {
-                  User user = _users[index];
-                  return ListTile(
-                    title: Text(user.name),
-                    subtitle: Text(user.email),
-                  );
-                })));
+      ),
+    );
   }
 }
